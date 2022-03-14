@@ -22,5 +22,16 @@ export class CurrentWeatherComponent implements OnInit {
                 .subscribe((data) => this.current = data)
   }
 
+  getOrdinal(date: number) {
+    const n = new Date(date).getDate()
+    if (n > 3 && n < 21)
+      return 'th';
+    switch (n % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
 
+  }
 }
